@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,6 +26,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.075180403888225555" green="0.069178871810436249" blue="0.30644020438194275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EE9-Ip-URN">
+                                <rect key="frame" x="96" y="530" width="183" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="25B-YT-mTP"/>
+                                </constraints>
+                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hny-nl-Ta8">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <color key="backgroundColor" red="0.99226838350296021" green="0.9961274266242981" blue="0.99599415063858032" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,13 +48,17 @@
                             <constraint firstAttribute="trailing" secondItem="Hny-nl-Ta8" secondAttribute="trailing" id="2mM-2c-4sU"/>
                             <constraint firstItem="Hny-nl-Ta8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Xt-Io-zxi"/>
                             <constraint firstItem="tlZ-mw-7OL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7eP-hG-wy6"/>
+                            <constraint firstItem="EE9-Ip-URN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="DNL-HA-o8V"/>
+                            <constraint firstItem="Hny-nl-Ta8" firstAttribute="top" secondItem="EE9-Ip-URN" secondAttribute="bottom" constant="50" id="Di6-Nt-ZUd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Hny-nl-Ta8" secondAttribute="bottom" id="EaQ-Xk-rg1"/>
                             <constraint firstItem="tlZ-mw-7OL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="GZQ-G5-GLv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EE9-Ip-URN" secondAttribute="trailing" constant="80" id="HHW-kg-nWk"/>
                             <constraint firstAttribute="trailing" secondItem="tlZ-mw-7OL" secondAttribute="trailing" id="RQ8-Nr-FS0"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tlZ-mw-7OL" secondAttribute="bottom" id="qY4-1v-CyQ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="EE9-Ip-URN" id="FgG-3M-WzY"/>
                         <outlet property="scrollView" destination="tlZ-mw-7OL" id="i7j-OY-wUT"/>
                     </connections>
                 </viewController>

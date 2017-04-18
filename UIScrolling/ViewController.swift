@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        scrollView.delegate = self
         
         let slide1:Slide1 = Bundle.main.loadNibNamed("Slide1", owner: self, options: nil)?.first as! Slide1
         let slide2:Slide2 = Bundle.main.loadNibNamed("Slide2", owner: self, options: nil)?.first as! Slide2
@@ -21,21 +25,17 @@ class ViewController: UIViewController {
         
         let slides: [UIView] = [slide1, slide2, slide3]
         
+        setupSlideView()
+        
+        setupScrollView(slides: slides)
+        
+        view.bringSubview(toFront: pageControl)
+    }
+    
+    func setupSlideView(){
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
         scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(3), height: view.frame.height)
-        
-        setupScrollView(slides: slides)
-        /*
-        slide1.frame = CGRect(x: view.frame.width * CGFloat(0), y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.addSubview(slide1)
-        
-        slide2.frame = CGRect(x: view.frame.width * CGFloat(1), y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.addSubview(slide2)
-        
-        slide3.frame = CGRect(x: view.frame.width * CGFloat(2), y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.addSubview(slide3)
-         */
     }
     
     func setupScrollView(slides: [UIView]){
@@ -43,6 +43,11 @@ class ViewController: UIViewController {
             slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
             scrollView.addSubview(slides[i])
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
     }
 
 }
